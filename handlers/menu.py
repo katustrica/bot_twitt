@@ -1,18 +1,13 @@
-from misc import dp
-from aiogram.types import ReplyKeyboardMarkup, Message
+from misc import dp, admin_ids
+from aiogram.types import Message
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.dispatcher.filters import Text
 import logging
 
-
-class ShowSearch(StatesGroup):
-    waiting_for_search_text = State()
+from .states import AdminState, ShowSearch, menu_keyboard, cancel_keyboard, admin_keyboard
 
 
-menu_keyboard = ReplyKeyboardMarkup(
-    [['Поиск по тексту'], ['FAQ'], ['Помощь']], resize_keyboard=True
-)
 
 @dp.message_handler(Text(equals='FAQ', ignore_case=True), state='*')
 async def show_faq(message: Message):
@@ -52,9 +47,8 @@ async def show_search(message: Message):
     state : FSMContext
         Сброс состояния пользователя.
     """
-    keyboard = ReplyKeyboardMarkup([['Отмена']], resize_keyboard=True)
     await ShowSearch.waiting_for_search_text.set()
-    await message.answer('Введи поисковой запрос!', reply_markup=keyboard)
+    await message.answer('Введи поисковой запрос!', reply_markup=cancel_keyboard)
 
 
 @dp.message_handler(state=ShowSearch.waiting_for_search_text)
@@ -70,9 +64,13 @@ async def search(message: Message, state: FSMContext):
         Сброс состояния пользователя.
     """
     if message.text == 'Отмена':
-        await state.finish()
-        await message.answer('Привет, что хочешь делать?',
-                             reply_markup=menu_keyboard)
+        if message.from_user.id in admin_ids:
+            await AdminState.wait_admin_action.set()
+            await message.answer(text='Выбери действие:', reply_markup=admin_keyboard)
+        else:
+            await state.finish()
+            await message.answer('Привет, что хочешь делать?',
+                                reply_markup=menu_keyboard)
     else:
         await message.answer('Ничего не нашел, потому что пока ничего у меня нет из функционала :-)')
 
