@@ -10,8 +10,6 @@ from .menu import show_search
 from user import get_all_users
 
 
-
-
 @dp.message_handler(content_types = ContentType.ANY, state=AdminState.wait_message_text)
 async def admin_send_message(message: Message, state: FSMContext):
     """
@@ -54,9 +52,10 @@ async def admin_menu(message: Message, state: FSMContext):
     state : FSMContext
         Состояние админа
     """
-    if message.text == 'Отправить всем сообщение':
+    import pdb; pdb.set_trace()
+    if message.text == _('Send a message to everyone'):
         await AdminState.wait_message_text.set()
         await message.answer('Пришли сообщение, которое нужно всем разослать, если хочешь отменить, то нажми отмена.',
                              reply_markup=cancel_keyboard)
-    if message.text == 'Поиск по тексту':
+    if message.text == _('Text search'):
         await ShowSearch.waiting_for_search_text.set()

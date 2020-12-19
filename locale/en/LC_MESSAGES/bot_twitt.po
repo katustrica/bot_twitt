@@ -1,0 +1,52 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-19 15:33+0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"X-Generator: Poedit 2.4.1\n"
+
+#: C:\Users\gtr42\botTwitt\bot_twitt\user.py:55
+msgid "Title"
+msgstr "Title"
+
+#: C:\Users\gtr42\botTwitt\bot_twitt\user.py:56
+msgid "Author"
+msgstr "Author"
+
+#: C:\Users\gtr42\botTwitt\bot_twitt\user.py:57
+msgid "Url"
+msgstr "Url"
+
+#: C:\Users\gtr42\botTwitt\bot_twitt\user.py:58
+msgid "Create_date"
+msgstr "Create_date"
+
+#: C:\Users\gtr42\botTwitt\bot_twitt\handlers\admin.py:56
+#: C:\Users\gtr42\botTwitt\bot_twitt\handlers\states.py:15
+msgid "Send a message to everyone"
+msgstr "Send a message to everyone"
+
+#: C:\Users\gtr42\botTwitt\bot_twitt\handlers\admin.py:60
+#: C:\Users\gtr42\botTwitt\bot_twitt\handlers\states.py:15
+#: C:\Users\gtr42\botTwitt\bot_twitt\handlers\states.py:18
+msgid "Text search"
+msgstr "Text search"
+
+#: C:\Users\gtr42\botTwitt\bot_twitt\handlers\states.py:18
+msgid "FAQ"
+msgstr "FAQ"
+
+#: C:\Users\gtr42\botTwitt\bot_twitt\handlers\states.py:18
+msgid "Help"
+msgstr "Help"
+
+#: C:\Users\gtr42\botTwitt\bot_twitt\handlers\states.py:20
+msgid "Cancel"
+msgstr "Cancel"

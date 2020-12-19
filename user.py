@@ -1,6 +1,7 @@
 from marshmallow import Schema, fields, post_load
 import configparser
 from pathlib import Path
+from datetime import datetime
 
 
 class User():
@@ -42,7 +43,20 @@ class UserSchema(Schema):
     def make_user(self, data, **kwargs):
         return User(**data)
 
+class MessageSchema(Schema):
+    title = fields.Str()
+    author = fields.Str()
+    url = fields.Str()
+    create_date = fields.Int()
 
+    @post_load
+    def make_message(self, data, **kwargs):
+        return (
+            _('Title') + f": {data['title']}\n"
+            _('Author') + f": {data['author']}\n"
+            _('Url') + f": {data['url']}\n"
+            _('Create_date') + f": {datetime.fromtimestamp(data['create_date']).strftime('%I:%M, %d %B, %Y')}"
+        )
 
 config = configparser.ConfigParser()
 config.read('config.ini')

@@ -12,9 +12,9 @@ class ShowSearch(StatesGroup):
 
 
 admin_keyboard = ReplyKeyboardMarkup(
-    [['Поиск по тексту'], ['Отправить всем сообщение']], resize_keyboard=True
+    [[_('Text search')], [_('Send a message to everyone')]], resize_keyboard=True
 )
 menu_keyboard = ReplyKeyboardMarkup(
-    [['Поиск по тексту'], ['FAQ'], ['Помощь']], resize_keyboard=True
+    [[_('Text search')], [_('FAQ')], [_('Help')]], resize_keyboard=True
 )
-cancel_keyboard = ReplyKeyboardMarkup([['Отмена']], resize_keyboard=True)
+cancel_keyboard = ReplyKeyboardMarkup([[_('Cancel')]], resize_keyboard=True)
